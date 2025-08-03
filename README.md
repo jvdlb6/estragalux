@@ -6,6 +6,8 @@ Por este motivo é importante que matenhas os commits organizados.
 
 No final para alêm da solução cria um ficheiro em markdown onde indiques os teus passos, o(s) erros encontrados e respetiva solução.
 
+Deves clonar o projeto e posteriormente partilhar a tua versão com a solução
+
 O exercicio é composto por duas fases, a primeira envolva a resolução de um bug e na segunda é solicitada uma pequena funcionalidade.
 
 ## Cenário
