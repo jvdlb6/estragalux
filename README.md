@@ -1,3 +1,5 @@
+# EstragaLux
+
 Este exercício pretende ser bastante simples e tem como ideia principal perceber como te organizas, quais são as prioridades e ainda avaliar a facilidade com que encontras soluções.
 
 Por este motivo é importante que matenhas os commits organizados.
