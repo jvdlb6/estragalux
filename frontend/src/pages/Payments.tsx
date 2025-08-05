@@ -158,20 +158,15 @@ const PaymentStatusChip: React.FC<{ status: string }> = ({ status }) => {
 
 const formatDate = (dateString: string | null | undefined): string => {
   if (!dateString) return 'Not set';
-  
+
   try {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       console.error('Invalid date string:', dateString);
       return 'Invalid date';
     }
-    
-    // Adjust for timezone offset and format
-    const adjustedDate = new Date(
-      date.getTime() - date.getTimezoneOffset() * 60000
-    );
-    
-    return adjustedDate.toLocaleString('en-GB', {
+
+    return date.toLocaleString('en-GB', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -249,7 +244,7 @@ const Payments: React.FC = () => {
             status: formData.status,
           },
         });
-        
+
         await updatePayment({
           variables: {
             id: editingPayment.id,
@@ -271,7 +266,7 @@ const Payments: React.FC = () => {
             status: formData.status,
           },
         });
-        
+
         await createPayment({
           variables: {
             input: {
@@ -357,34 +352,34 @@ const Payments: React.FC = () => {
                   </Typography>
                   <PaymentStatusChip status={payment.status} />
                 </Box>
-                
+
                 <Box display="flex" alignItems="center" mb={1}>
                   <PersonIcon fontSize="small" sx={{ mr: 1 }} />
                   <Typography variant="body2" color="textSecondary">
                     {payment.apartmentOwner.name} (Apt {payment.apartmentOwner.apartmentNumber})
                   </Typography>
                 </Box>
-                
+
                 <Box display="flex" alignItems="center" mb={1}>
                   <CalendarIcon fontSize="small" sx={{ mr: 1 }} />
                   <Typography variant="body2" color="textSecondary">
                     {payment.month}
                   </Typography>
                 </Box>
-                
+
                 <Box display="flex" alignItems="center" mb={1}>
                   <CalendarIcon fontSize="small" sx={{ mr: 1 }} />
                   <Typography variant="body2" color="textSecondary">
                     Payment Date: {formatDate(payment.paymentDate)}
                   </Typography>
                 </Box>
-                
+
                 {payment.description && (
                   <Typography variant="body2" color="textSecondary" mb={1}>
                     {payment.description}
                   </Typography>
                 )}
-                
+
                 <Typography variant="caption" color="textSecondary">
                   Created: {formatDate(payment.createdAt)}
                 </Typography>
@@ -434,7 +429,7 @@ const Payments: React.FC = () => {
                 </Select>
               </FormControl>
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -447,7 +442,7 @@ const Payments: React.FC = () => {
                 }}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -460,7 +455,7 @@ const Payments: React.FC = () => {
                 }}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -471,7 +466,7 @@ const Payments: React.FC = () => {
                 rows={2}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
@@ -499,4 +494,4 @@ const Payments: React.FC = () => {
   );
 };
 
-export default Payments; 
+export default Payments;
