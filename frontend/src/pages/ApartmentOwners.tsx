@@ -157,7 +157,7 @@ const ApartmentOwners: React.FC = () => {
     buildingId: '',
     phoneNumber: '',
   });
-
+  const [buildingFilter, setBuildingFilter] = useState<string>('');
   const { loading, error, data, refetch } = useQuery(GET_APARTMENT_OWNERS);
   const { data: buildingsData } = useQuery(GET_BUILDINGS);
   const [createOwner] = useMutation(CREATE_APARTMENT_OWNER);
