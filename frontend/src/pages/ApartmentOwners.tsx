@@ -235,6 +235,14 @@ const ApartmentOwners: React.FC = () => {
     }
   };
 
+
+  const filteredOwners = data?.apartmentOwners.filter((owner: ApartmentOwner) => {
+    if (!buildingFilter) {
+      return true;
+    }
+    return owner.building?.id === buildingFilter;
+  });
+
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
