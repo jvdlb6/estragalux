@@ -300,7 +300,7 @@ const ApartmentOwners: React.FC = () => {
       </Box>
 
       <Grid container spacing={3}>
-        {data?.apartmentOwners.map((owner: ApartmentOwner) => (
+        {filteredOwners.map((owner: ApartmentOwner) => (
           <Grid item xs={12} sm={6} md={4} key={owner.id}>
             <Card>
               <CardContent>
@@ -430,4 +430,4 @@ const ApartmentOwners: React.FC = () => {
   );
 };
 
-export default ApartmentOwners; 
+export default ApartmentOwners;
