@@ -31,24 +31,25 @@ import {
   Email as EmailIcon,
   Home as HomeIcon,
   Apartment as ApartmentIcon,
+  FilterList as FilterIcon,
 } from '@mui/icons-material';
 import { gql } from '@apollo/client';
 
 const formatDate = (dateString: string | null | undefined): string => {
   if (!dateString) return 'Not set';
-  
+
   try {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       console.error('Invalid date string:', dateString);
       return 'Invalid date';
     }
-    
+
     // Adjust for timezone offset and format
     const adjustedDate = new Date(
       date.getTime() - date.getTimezoneOffset() * 60000
     );
-    
+
     return adjustedDate.toLocaleString('en-GB', {
       day: '2-digit',
       month: '2-digit',
