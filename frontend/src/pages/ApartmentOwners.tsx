@@ -272,6 +272,33 @@ const ApartmentOwners: React.FC = () => {
         </Button>
       </Box>
 
+      <Box mb={3}>
+        <FormControl sx={{ minWidth: 200 }}>
+          <InputLabel id="building-filter-label">
+            <Box display="flex" alignItems="center">
+              <FilterIcon fontSize="small" sx={{ mr: 1 }} />
+              Filter by Building
+            </Box>
+          </InputLabel>
+          <Select
+            labelId="building-filter-label"
+            id="building-filter"
+            value={buildingFilter}
+            label="Filter by Building"
+            onChange={(e: SelectChangeEvent) => setBuildingFilter(e.target.value)}
+          >
+            <MenuItem value="">
+              <em>All Buildings</em>
+            </MenuItem>
+            {buildingsData?.buildings.map((building: Building) => (
+              <MenuItem key={building.id} value={building.id}>
+                {building.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+
       <Grid container spacing={3}>
         {data?.apartmentOwners.map((owner: ApartmentOwner) => (
           <Grid item xs={12} sm={6} md={4} key={owner.id}>
