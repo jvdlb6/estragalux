@@ -93,20 +93,15 @@ interface BuildingFormData {
 
 const formatDate = (dateString: string | null | undefined): string => {
   if (!dateString) return 'Not set';
-  
+
   try {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       console.error('Invalid date string:', dateString);
       return 'Invalid date';
     }
-    
-    // Adjust for timezone offset and format
-    const adjustedDate = new Date(
-      date.getTime() - date.getTimezoneOffset() * 60000
-    );
-    
-    return adjustedDate.toLocaleString('en-GB', {
+
+    return date.toLocaleString('en-GB', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -249,21 +244,21 @@ const Buildings: React.FC = () => {
                 <Typography variant="h6" gutterBottom>
                   {building.name}
                 </Typography>
-                
+
                 <Box display="flex" alignItems="center" mb={1}>
                   <LocationIcon fontSize="small" sx={{ mr: 1 }} />
                   <Typography variant="body2" color="textSecondary">
                     {building.address}
                   </Typography>
                 </Box>
-                
+
                 <Box display="flex" alignItems="center" mb={1}>
                   <ApartmentIcon fontSize="small" sx={{ mr: 1 }} />
                   <Typography variant="body2" color="textSecondary">
                     {building.totalFloors} floors
                   </Typography>
                 </Box>
-                
+
                 {building.description && (
                   <Box display="flex" alignItems="flex-start" mb={1}>
                     <DescriptionIcon fontSize="small" sx={{ mr: 1, mt: 0.2 }} />
@@ -272,7 +267,7 @@ const Buildings: React.FC = () => {
                     </Typography>
                   </Box>
                 )}
-                
+
                 <Typography variant="caption" color="textSecondary">
                   Created: {formatDate(building.createdAt)}
                 </Typography>
@@ -314,7 +309,7 @@ const Buildings: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -325,7 +320,7 @@ const Buildings: React.FC = () => {
                 rows={2}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -338,7 +333,7 @@ const Buildings: React.FC = () => {
                 }}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -362,4 +357,4 @@ const Buildings: React.FC = () => {
   );
 };
 
-export default Buildings; 
+export default Buildings;

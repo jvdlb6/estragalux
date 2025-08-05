@@ -45,12 +45,7 @@ const formatDate = (dateString: string | null | undefined): string => {
       return 'Invalid date';
     }
 
-    // Adjust for timezone offset and format
-    const adjustedDate = new Date(
-      date.getTime() - date.getTimezoneOffset() * 60000
-    );
-
-    return adjustedDate.toLocaleString('en-GB', {
+    return date.toLocaleString('en-GB', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
